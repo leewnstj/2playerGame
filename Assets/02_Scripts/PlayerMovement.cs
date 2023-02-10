@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask GroundLayer;
     public float X;
 
+    public bool leftMove;
+    public bool rightMove;
+
     private Rigidbody2D rigid;
 
     private void Start()
@@ -22,14 +25,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(LeftMove))
         {
             X = -1;
+            leftMove = true;
         }
         if (Input.GetKeyDown(RightMove))
         {
             X = 1;
+            rightMove = true;
         }
         if (Input.GetKeyUp(RightMove) || Input.GetKeyUp(LeftMove))
         {
             X = 0;
+            leftMove = false;
+            rightMove = false;
         }
         
         rigid.velocity = new Vector2(X * PlayerSpeed, rigid.velocity.y);
