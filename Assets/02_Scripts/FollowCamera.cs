@@ -19,7 +19,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Update()
     {
-        Vector3 camPos = new Vector3((target1.position.x + target2.position.x) / 2, (target1.position.y + target2.position.y) / 2 + 3, -10);
+        Vector3 camPos = new Vector3((target1.position.x + target2.position.x) / 2, (target1.position.y + target2.position.y) / 2 + 1, -10);
         cam.transform.position = Vector3.Lerp(cam.transform.position, camPos, smoothing);
     }
 }
