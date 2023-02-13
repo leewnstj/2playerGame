@@ -40,11 +40,6 @@ public class PlayerMovement : MonoBehaviour
         rigid.velocity = new Vector2(X * PlayerSpeed, rigid.velocity.y);
         anim.SetFloat("X", X);
 
-        FlipPlayer();
-    }
-
-    private void FlipPlayer()
-    {
         transform.localScale = X switch
         {
             1 => new Vector2(inputX, inputY),
