@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     public float X;
 
     private Rigidbody2D rigid;
+    private Animator anim;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     public void Movement(KeyCode LeftMove,KeyCode RightMove)
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         rigid.velocity = new Vector2(X * PlayerSpeed, rigid.velocity.y);
+        anim.SetFloat("X", X);
 
         FlipPlayer();
     }
