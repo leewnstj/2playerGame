@@ -5,18 +5,21 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float PlayerSpeed;
-    [SerializeField] float RayDis;
-    [SerializeField] float JumpPower;
-    [SerializeField] LayerMask GroundLayer;
     public float X;
 
     private Rigidbody2D rigid;
     private Animator anim;
 
+    private float inputX;
+    private float inputY;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        inputX = transform.localScale.x;
+        inputY = transform.localScale.y;
     }
 
     public void Movement(KeyCode LeftMove,KeyCode RightMove)
@@ -44,19 +47,9 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.localScale = X switch
         {
-            1 => new Vector2(1,1),
-            -1 => new Vector2(-1, 1),
+            1 => new Vector2(inputX, inputY),
+            -1 => new Vector2(-inputX, inputY),
             _ => transform.localScale
         };
-    }
-
-    public void PlayerJump(KeyCode UpMove)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, RayDis, GroundLayer);
-
-        if (hit && Input.GetKeyDown(UpMove))
-        {
-            rigid.velocity = new Vector2(rigid.velocity.x, JumpPower);
-        }
     }
 }
