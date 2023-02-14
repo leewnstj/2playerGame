@@ -8,24 +8,24 @@ public enum obstacle
 }
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] obstacle obs;
+    [SerializeField] GameObject mine;
     [SerializeField] float waitTime;
-    [SerializeField] float speed;
-    [SerializeField] obstacle obj;
-    [SerializeField] Transform endMove;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("1Player")|| collision.collider.CompareTag("2Player"))
+        if(collision.collider.CompareTag("1Player") || collision.collider.CompareTag("2Player"))
         {
-            if(obj == obstacle.DownObs)
+            if(obs == obstacle.DownObs)
             {
-                StartCoroutine(DownObstacle());
+                StartCoroutine(DownObs());
             }
         }
     }
 
-    IEnumerator DownObstacle()
+    IEnumerator DownObs()
     {
         yield return new WaitForSeconds(waitTime);
+        mine.SetActive(false);
     }
 }
