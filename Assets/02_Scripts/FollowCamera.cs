@@ -9,6 +9,7 @@ public class FollowCamera : MonoBehaviour
 
     [SerializeField] Camera cam;
     [SerializeField] float smoothing;
+    [SerializeField] float yMove;
 
     public float x;
 
@@ -19,7 +20,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Update()
     {
-        Vector3 camPos = new Vector3((target1.position.x + target2.position.x) / 2, (target1.position.y + target2.position.y) / 2 + 1, -10);
+        Vector3 camPos = new Vector3((target1.position.x + target2.position.x) / 2, (target1.position.y + target2.position.y) / 2 + yMove, -10);
         cam.transform.position = Vector3.Lerp(cam.transform.position, camPos, smoothing);
     }
 }
