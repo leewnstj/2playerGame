@@ -216,7 +216,7 @@ MonoBehaviour:
   JumpPower: 12
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 6272
+    m_Bits: 6208
   player:
     serializedVersion: 2
     m_Bits: 64
