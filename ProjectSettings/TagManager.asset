@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FrontOBS
+    uniqueID: 1682791529
+    locked: 0
